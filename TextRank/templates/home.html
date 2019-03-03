@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    HomePage
+{% endblock %}
+{% block content %}
+<div id="particles-js"></div>
+    <h3 class="home-content">
+        <p>
+                &emsp;&emsp;
+                “你在平原上走着走着，突然迎面遇到一堵墙，这墙向上无限高，向下无限深，
+                向左无限远，向右无限远，这墙是什么？” 
+                <br>&emsp;&emsp;“死亡”
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;---&nbsp;《流浪地球》
+        </p>
+    </h3>
+</div>
+<script src="/static/js/particles.js"></script>
+<script src="/static/js/app.js"></script>
+    <style type="text/css">
+        h3.home-content {
+            font-size: 233%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            line-height: 2em;
+        }
+    </style>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Test
+{% endblock %}
+{% block content %}
+    <!-- <form action="/post/" method="post">
+        {% csrf_token %}
+        <div style="display:inline">
+            <textarea class="form-control" style="width: 540px;height:600px;resize: none;" name='q' >{{org}}</textarea>
+            <textarea class="form-control" style="width: 540px;height:600px;resize: none;"  readonly="readonly" >{{ result }}</textarea>
+        </div>
+        <input type="submit" value="Submit">
+    </form> -->
+    <form action="/tr/" method="post">
+    {% csrf_token %}
+    <div class="container">
+            <div class="row">
+                <div class="col-xs-6 hot-data">
+                        <span><input type="submit" value="Submit" style="background:lightgoldenrodyellow" class="btn btn-default"></span>
+                        <div class="panel panel-default">
+                                <textarea class="form-control" placeholder="输入需要提取摘要的文章" style="height:600px;resize: none;font-size: 27px;" name='q' >{{org}}</textarea>
+                        </div>
+                </div>
+                <div class="col-xs-6 hot-data" style="margin-top: 85px">
+                        <div class="panel panel-default">
+                                <textarea class="form-control" style="height:600px;resize: none;font-size: 27px;" readonly>{{ result }}</textarea> 
+                        </div>
+            </div>
+        </div>
+    </form>  
+
+    <style type="text/css">
+        .btn-default{
+            /* display:block;*/
+            margin-top: 25px;
+            margin-bottom: 15;
+            font-size: 160%;
+        }
+    </style>
+{% endblock %}
