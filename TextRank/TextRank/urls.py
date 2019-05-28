@@ -19,6 +19,7 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.index,name = 'home'),
+    path('others/',views.others,name = 'others'),
     path('tr/',include('t_rank.urls')),
     # path('post/',views.search,name = 'post')
 ]

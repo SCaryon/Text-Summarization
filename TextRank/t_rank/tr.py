@@ -1,5 +1,7 @@
-from django.shortcuts import render,render_to_response
-import re,jieba,gensim,math                #jieba分词库
+import re
+import jieba                #jieba分词库
+import gensim
+import math
 import numpy as np
 import networkx as nx       #用于图的建立
 import itertools
@@ -25,7 +27,7 @@ class tr(object):
         :param context: 分句后的句子列表
         :return: total_cutword是对每个句子进行分词，去除停用词的结果，类型是列表的列表；total_content是过滤了全停用词组成的句子后的新的句子列表，与前者一一对应
         '''
-        with open(r't_rank\stopwords.txt',encoding='utf-8') as f:
+        with open('data/stopwords.txt',encoding='utf-8') as f:
             stopkey = [line.strip() for line in f.readlines()]        #加载停用词表
         total_cutword = []      #每个句子的分词结果
         total_content = []      #存储不是全部由停用词组成的句子
@@ -94,6 +96,13 @@ class tr(object):
             if "实用新型" in i:
                 board[word_sent.index(i)][word_sent.index(i)]+=50.0
         board[0][0] += 70.0  # 对每段的第一句增加权重
+
+        # test=[]
+        # for i in range(num):
+        #     for j in range(num):
+        #         test.append(board[i][j])
+        # print(test)
+
         return board
 
 
@@ -156,15 +165,19 @@ class tr(object):
         context['keyword'] = key_word
         return context
 
-def basic(request):
-    content={}
-    return render(request,'t_rank.html',content)
 
-def res(request):
-    content = {}
-    content['org'] = ""
-    if request.POST:
-        tmp = request.POST['q']
-        content['org'] = tmp
-        content['result'] = tr.Run(tmp,2)
-    return render(request,'search.html',content)
+def LoadData():
+    with open('data/content.txt',encoding='GBK') as f:
+        content = "".join(line.strip()+"\n" for line in f.readlines() if line)
+    paragraphs = content.split("\n")
+    if "" in paragraphs:
+        paragraphs.remove("")
+    return paragraphs
+if __name__ == '__main__':
+    ans = []
+    paragraphs = LoadData()
+    print("摘要：")
+    for i in paragraphs:
+        ans.append(tr.Run(i, 2))
+    for it in ans:
+        print('summsry=',it['summsry'],' keyword',it['keyword'])

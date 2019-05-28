@@ -4,14 +4,6 @@
     Test
 {% endblock %}
 {% block content %}
-    <!-- <form action="/post/" method="post">
-        {% csrf_token %}
-        <div style="display:inline">
-            <textarea class="form-control" style="width: 540px;height:600px;resize: none;" name='q' >{{org}}</textarea>
-            <textarea class="form-control" style="width: 540px;height:600px;resize: none;"  readonly="readonly" >{{ result }}</textarea>
-        </div>
-        <input type="submit" value="Submit">
-    </form> -->
     <form action="/tr/" method="post">
     {% csrf_token %}
     <div class="container">
@@ -22,9 +14,12 @@
                                 <textarea class="form-control" placeholder="输入需要提取摘要的文章" style="height:600px;resize: none;font-size: 27px;" name='q' >{{org}}</textarea>
                         </div>
                 </div>
-                <div class="col-xs-6 hot-data" style="margin-top: 85px">
+                <div class="col-xs-6 hot-data" style="margin-top: 85px;">
                         <div class="panel panel-default">
-                                <textarea class="form-control" style="height:600px;resize: none;font-size: 27px;" readonly>{{ result }}</textarea> 
+                            <h3 style="margin-top: 2%"><span class="label label-default" style="color: #000 ;background:white">总结</span></h3>    
+                            <textarea class="form-control" style="height:100px;resize: none;font-size: 27px;" readonly>{{ result.keyword }}</textarea>
+                            <h3 style="margin-top: 2%"><span class="label label-default" style="color: #000 ;background: white">摘要</span></h3>    
+                            <textarea class="form-control" style="height:430px;resize: none;font-size: 27px;" readonly>{{ result.summsry }}</textarea> 
                         </div>
             </div>
         </div>
