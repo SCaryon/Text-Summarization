@@ -166,5 +166,6 @@ def res(request):
     if request.POST:
         tmp = request.POST['q']
         content['org'] = tmp
-        content['result'] = tr.Run(tmp,2)
+        if tmp != "":
+            content['result'] = tr.Run(tmp,2)
     return render(request,'search.html',content)
